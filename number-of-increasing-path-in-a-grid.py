@@ -1,5 +1,5 @@
 class Solution:
-    def countPaths(self, grid: List[List[int]]) -> int:
+    def countPaths(self, grid: list[list[int]]) -> int:
         # Standard DFS + recursion with memorisation
         # for 2D DP problems: use caching technique
 

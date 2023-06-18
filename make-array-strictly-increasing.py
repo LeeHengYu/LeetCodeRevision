@@ -1,5 +1,6 @@
 class Solution:
-    def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+    def makeArrayIncreasing(self, arr1: list[int], arr2: list[int]) -> int:
+        import bisect
         if len(arr1) == 1:
             return 0
 
@@ -20,7 +21,7 @@ class Solution:
                 res = solve(i+1, arr1[i])  # still increasing
 
             # find the first number in arr2 bigger than prev
-            idx = bisect_right(arr2, prev)
+            idx = bisect.bisect_right(arr2, prev)
             # if prev >= arr[i-1]
             if idx < len(arr2):
                 res = min(res, 1+solve(i+1, arr2[idx]))  # recursion
