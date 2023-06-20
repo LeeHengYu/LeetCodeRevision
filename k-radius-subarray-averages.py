@@ -11,7 +11,6 @@ class Solution:
             cumsum.append(temp)
 
         res = []
-        deno = 2*k+1
         for i in range(n):
             if i+k >= n or i-k < 0:
                 res.append(-1)  # out of bound
