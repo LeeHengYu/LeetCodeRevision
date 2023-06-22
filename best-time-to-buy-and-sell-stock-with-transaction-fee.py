@@ -10,6 +10,7 @@ class Solution1:
             # here we implicitly allow day trade but since it is never optimal so it won't violate the rule
         return profit_wo
 #####################################################################
+#####################################################################
 
 
 class Solution2:
