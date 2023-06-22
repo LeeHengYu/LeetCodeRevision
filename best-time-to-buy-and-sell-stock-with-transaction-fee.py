@@ -4,10 +4,12 @@ class Solution1:
         profit_wo = 0
 
         for p in range(1, len(prices)):
-            # cash with stocks in hand
+            # continue holding, or buy the stock here
             profit_w = max(profit_w, profit_wo-prices[p])
-            profit_wo = max(profit_wo, profit_w + prices[p]-fee)  # without
-            # here we implicitly allow day trade but since it is never optimal so it won't violate the rule
+
+            # not buy the stock, or sell the stock
+            profit_wo = max(profit_wo, profit_w + prices[p]-fee)
+            # here implicitly allow day trade but since it is never optimal, it won't violate the rule
         return profit_wo
 #####################################################################
 #####################################################################
