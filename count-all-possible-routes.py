@@ -20,3 +20,5 @@ class Solution:
 
         dfs(start, fuel)
         return cache[(start, fuel)] % (10**9+7)
+
+        # in python, int is not bounded by 32-bit, so we don't really need to use mod everywhere.
