@@ -1,31 +1,31 @@
 class Solution:
-    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        # dfs
-        n = len(graph)
-        visit = set()
-        onPath = [False]*n
-        def dfs(i):
-            visit.add(i)
-            onPath[i]=True
-            for nei in graph[i]:
-                if nei not in visit:
-                    if dfs(nei):
-                        return True
-                elif onPath[nei]:
-                    return True
-            onPath[i]=False
-            return False
-            # if visited, skip
-            # if form a cycle: return True, path remained on record 
-            # if not form a cycle, backtrack to restore onPath. 
+    def eventualSafeNodes(self, adj: List[List[int]]) -> List[int]:
+        # backward DFS - topological sort
+        n = len(adj)
+        output = []
+        visit, cycle = set(), set()
+        def dfs(node):
+            # 3 states:
+            # unvisted - not added into visit nor cycle
+            # visited - it's added into output
+            # visiting - it's in the cycle but not in visit
+            
+            if node in visit:
+                return True
+            if node in cycle:
+                return False
+
+            cycle.add(node)
+            for neighbor in adj[node]:
+                if not dfs(neighbor):
+                    return False
+            cycle.remove(node)
+            visit.add(node)
+            output.append(node)
+            return True
 
         res = []
         for i in range(n):
-            if i not in visit:
-                dfs(i)
-        for i in range(n):
-            if not onPath[i]:
+            if dfs(i):
                 res.append(i)
-
-        return res
-    # another solution: topological sort is complicated cuz you need to reverse the edges first, which is not that intuitive.
+        return res   
