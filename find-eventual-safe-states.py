@@ -2,7 +2,6 @@ class Solution:
     def eventualSafeNodes(self, adj: List[List[int]]) -> List[int]:
         # backward DFS - topological sort
         n = len(adj)
-        output = []
         visit, cycle = set(), set()
         def dfs(node):
             # 3 states:
@@ -21,7 +20,6 @@ class Solution:
                     return False
             cycle.remove(node)
             visit.add(node)
-            output.append(node)
             return True
 
         res = []
