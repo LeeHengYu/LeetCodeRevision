@@ -51,3 +51,5 @@ class Solution:
 
         backtrack(0)
         return res
+    
+    # sol: https://leetcode.com/problems/smallest-sufficient-team/solutions/334630/python-optimized-backtracking-with-explanation-and-code-comments-88-ms/
