@@ -1,3 +1,4 @@
+from bisect import bisect_left
 class Solution1: # O(n*n)
     def lengthOfLIS(self, nums: List[int]) -> int:
         dp = [1]*len(nums)
@@ -8,7 +9,7 @@ class Solution1: # O(n*n)
         return max(dp)
     
     
-class Solution2: #O(nlogn)
+class Solution2: # O(nlogn)
     def lengthOfLIS(self, nums: List[int]) -> int:
         res = []
         for n in nums:
@@ -18,3 +19,4 @@ class Solution2: #O(nlogn)
                 idx = bisect_left(res,n)
                 res[idx]=n
         return len(res)
+    # not intuitive
