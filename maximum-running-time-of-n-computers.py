@@ -14,3 +14,4 @@ class Solution:
             else:
                 r=m-1
         return res
+    # O( len(batteries) * log(10**14) )
