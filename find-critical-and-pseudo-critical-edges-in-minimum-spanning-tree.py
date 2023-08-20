@@ -1,3 +1,4 @@
+# Neetcode solution
 class UF:
     def __init__(self,n):
         self.par = [i for i in range(n)]

@@ -42,6 +42,6 @@ class Solution:
             itemInGroups[group[item]].append(item)
         ans = []
         for grp in orderedGroups:
-            ans+=(itemInGroups[grp])
+            ans+=itemInGroups[grp]
 
         return ans 
