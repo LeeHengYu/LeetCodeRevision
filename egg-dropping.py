@@ -7,13 +7,13 @@ def sol1(n):
     return n
 # two eggs
 def soltwo(n):
-    for i in range(1,201):
+    for i in range(1,n+1):
         if i*(i+1)//2 >= n:
             return i
 # three eggs
 def solthree(n):
     for i in range(1,n):
-        if i*(i**2+1)/6>=n:
+        if i*(i**2+5)/6>=n:
             return i
 ##############################################
 # universal sol (not used)
