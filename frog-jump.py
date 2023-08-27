@@ -1,4 +1,6 @@
+from bisect import bisect_left
 from functools import cache
+
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
         if stones[1]!=1: return False
@@ -7,13 +9,10 @@ class Solution:
             if i==len(stones)-1: return True
             if i>len(stones)-1: return False
             res = False
-            for j in range(i+1, len(stones)):
-                if stones[i]+k-1==stones[j]:
-                    res = res or dfs(j, k-1)
-                if stones[i]+k==stones[j]:
-                    res = res or dfs(j, k)
-                if stones[i]+k+1==stones[j]:
-                    res = res or dfs(j, k+1)
+            for jump in (k,k+1,k-1):
+                idx = bisect_left(stones, stones[i]+jump, lo=i+1)
+                if idx<len(stones) and stones[i]+jump==stones[idx]:
+                    res = res or dfs(idx, jump)
 
             return res
         return dfs(1, 1)
