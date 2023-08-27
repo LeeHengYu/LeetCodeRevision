@@ -7,12 +7,10 @@ class Solution:
         @cache
         def dfs(i, k):
             if i==len(stones)-1: return True
-            if i>len(stones)-1: return False
             res = False
             for jump in (k,k+1,k-1):
                 idx = bisect_left(stones, stones[i]+jump, lo=i+1)
                 if idx<len(stones) and stones[i]+jump==stones[idx]:
                     res = res or dfs(idx, jump)
-
             return res
         return dfs(1, 1)
