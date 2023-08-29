@@ -1,6 +1,5 @@
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
-        N = len(customers)
         Y, N = customers.count('Y'), 0
         min_pen = temp = Y+N
         res = 0
