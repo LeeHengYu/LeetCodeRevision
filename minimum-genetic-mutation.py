@@ -22,3 +22,5 @@ class Solution:
                             visit.add(newGene)
             layer += 1
         return -1
+    
+    
