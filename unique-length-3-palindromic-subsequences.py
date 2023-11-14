@@ -4,15 +4,13 @@ class Solution:
         res = set()
         left = set()
         right = Counter(s)
-        
-        for i in range(len(s)):
-            right[s[i]]-=1 # remove from the right
 
-            for j in range(26):
-                c = chr(ord('a') + j)
-                if c in left and right.get(c,0)>0:
-                    res.add((s[i], c)) # (mid, side)
-
-            left.add(s[i])
-
+        for c in s:
+            right[c] -= 1
+            # loop through 26 letters to check palindrome
+            for k in range(26):
+                alph = chr(ord('a')+k)
+                if alph in left and right[alph]>0:
+                    res.add((c, alph))
+            left.add(c)
         return len(res)
